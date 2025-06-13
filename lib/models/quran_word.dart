@@ -1,5 +1,6 @@
 class QuranWord {
   final int id;
+  final int lesson;
   final String arabic;
   final String transcription;
   final String translation;
@@ -7,6 +8,7 @@ class QuranWord {
 
   QuranWord({
     required this.id,
+    required this.lesson,
     required this.arabic,
     required this.transcription,
     required this.translation,
@@ -16,6 +18,7 @@ class QuranWord {
   factory QuranWord.fromJson(Map<String, dynamic> json) {
     return QuranWord(
       id: json['id'],
+      lesson: json['lesson'],
       arabic: json['arabic'],
       transcription: json['transcription'],
       translation: json['translation'],
@@ -26,6 +29,7 @@ class QuranWord {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'lesson': lesson,
       'arabic': arabic,
       'transcription': transcription,
       'translation': translation,
