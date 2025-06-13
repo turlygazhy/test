@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'learn_screen.dart';
+import 'lessons_screen.dart';
+import 'repeat_screen.dart';
 import 'progress_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -14,21 +15,31 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              child: Text('📘 Учить слова'),
+              child: Text('📚 Уроки'),
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => LearnScreen()),
+                  MaterialPageRoute(builder: (_) => const LessonsScreen()),
                 );
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
-              child: Text('📊 Прогресс'),
+              child: Text('🔁 Повторение'),
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ProgressScreen()),
+                  MaterialPageRoute(builder: (_) => const RepeatScreen()),
+                );
+              },
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              child: Text('📊 Статистика'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => ProgressScreen()),
                 );
               },
             ),

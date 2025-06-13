@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "lesson": 1,
     "arabic": "اللّه",
     "transcription": "Allah",
     "translation": "Бог",
@@ -8,6 +9,7 @@
   },
   {
     "id": 2,
+    "lesson": 1,
     "arabic": "رَسُول",
     "transcription": "Rasūl",
     "translation": "Посланник",
@@ -15,6 +17,7 @@
   },
   {
     "id": 3,
+    "lesson": 1,
     "arabic": "قُرْآن",
     "transcription": "Qur'ān",
     "translation": "Коран",
@@ -22,6 +25,7 @@
   },
   {
     "id": 4,
+    "lesson": 2,
     "arabic": "يَوْم",
     "transcription": "Yawm",
     "translation": "День",
@@ -29,9 +33,18 @@
   },
   {
     "id": 5,
+    "lesson": 2,
     "arabic": "كِتَاب",
     "transcription": "Kitāb",
     "translation": "Книга",
+    "isLearned": false
+  },
+  {
+    "id": 6,
+    "lesson": 2,
+    "arabic": "مَلِك",
+    "transcription": "Malik",
+    "translation": "Царь",
     "isLearned": false
   }
 ]
