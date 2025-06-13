@@ -15,16 +15,7 @@ class WordCard extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(word.arabic, style: const TextStyle(fontSize: 36)),
-                  IconButton(
-                    icon: const Icon(Icons.star_border),
-                    onPressed: () {},
-                  )
-                ],
-              ),
+              Text(word.arabic, style: const TextStyle(fontSize: 36)),
               const SizedBox(height: 16),
               Text(word.transcription, style: const TextStyle(fontSize: 20)),
               const SizedBox(height: 8),

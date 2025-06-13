@@ -50,29 +50,35 @@ class _LessonScreenState extends State<LessonScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('${_current + 1}/${words.length}'),
-                      if (_current < words.length - 1)
-                        ElevatedButton(
-                          onPressed: () {
-                            _controller.nextPage(
-                                duration: const Duration(milliseconds: 300),
-                                curve: Curves.easeInOut);
-                          },
-                          child: const Text('Далее'),
-                        )
-                      else
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) => TrainingScreen(
-                                        words: words,
-                                        lesson: widget.lesson,
-                                      )),
-                            );
-                          },
-                          child: const Text('Перейти к тренировке'),
-                        )
+                      ElevatedButton(
+                        onPressed: words[_current].isLearned
+                            ? null
+                            : () {
+                                setState(() {
+                                  words[_current].isLearned = true;
+                                });
+                                ProgressService
+                                    .markWordsLearned([words[_current].id]);
+                                if (_current < words.length - 1) {
+                                  _controller.nextPage(
+                                      duration:
+                                          const Duration(milliseconds: 300),
+                                      curve: Curves.easeInOut);
+                                } else {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => TrainingScreen(
+                                              words: words,
+                                              lesson: widget.lesson,
+                                            )),
+                                  );
+                                }
+                              },
+                        child: Text(words[_current].isLearned
+                            ? 'Изучено ✅'
+                            : 'Изучено'),
+                      )
                     ],
                   ),
                 )
