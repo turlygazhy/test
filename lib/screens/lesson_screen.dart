@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quran_words/services/progress_service.dart';
 import '../models/quran_word.dart';
 import '../services/word_service.dart';
 import '../widgets/word_card.dart';
