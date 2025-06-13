@@ -1,10 +1,12 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import '../models/quran_word.dart';
+import '../services/progress_service.dart';
 
 class TrainingScreen extends StatefulWidget {
   final List<QuranWord> words;
-  const TrainingScreen({super.key, required this.words});
+  final int lesson;
+  const TrainingScreen({super.key, required this.words, required this.lesson});
 
   @override
   State<TrainingScreen> createState() => _TrainingScreenState();
@@ -31,6 +33,8 @@ class _TrainingScreenState extends State<TrainingScreen> {
         _index++;
       });
     } else {
+      ProgressService.markWordsLearned(widget.words.map((w) => w.id).toList());
+      ProgressService.completeLesson(widget.lesson);
       showDialog(
         context: context,
         builder: (_) => AlertDialog(
