@@ -7,35 +7,38 @@ class LessonsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<int>(
-      future: WordService.lessonCount(),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          final count = snapshot.data!;
-          return ListView.builder(
-            itemCount: count,
-            itemBuilder: (context, index) {
-              final lessonNum = index + 1;
-              return ListTile(
-                title: Text('Урок $lessonNum'),
-                trailing: const Icon(Icons.chevron_right),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => LessonScreen(lesson: lessonNum),
-                    ),
-                  );
-                },
-              );
-            },
-          );
-        } else if (snapshot.hasError) {
-          return const Center(child: Text('Ошибка загрузки уроков'));
-        } else {
-          return const Center(child: CircularProgressIndicator());
-        }
-      },
+    return Scaffold(
+      appBar: AppBar(title: const Text('Уроки')),
+      body: FutureBuilder<int>(
+        future: WordService.lessonCount(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            final count = snapshot.data!;
+            return ListView.builder(
+              itemCount: count,
+              itemBuilder: (context, index) {
+                final lessonNum = index + 1;
+                return ListTile(
+                  title: Text('Урок $lessonNum'),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => LessonScreen(lesson: lessonNum),
+                      ),
+                    );
+                  },
+                );
+              },
+            );
+          } else if (snapshot.hasError) {
+            return const Center(child: Text('Ошибка загрузки уроков'));
+          } else {
+            return const Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
     );
   }
 }
