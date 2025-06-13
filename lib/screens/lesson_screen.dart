@@ -44,19 +44,38 @@ class _LessonScreenState extends State<LessonScreen> {
                     itemBuilder: (context, index) => WordCard(word: words[index]),
                   ),
                 ),
-                if (_current == words.length - 1)
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: ElevatedButton(
-                      child: Text('Я выучил(а)'),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (_) => TrainingScreen(words: words)),
-                        );
-                      },
-                    ),
-                  )
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('${_current + 1}/${words.length}'),
+                      if (_current < words.length - 1)
+                        ElevatedButton(
+                          onPressed: () {
+                            _controller.nextPage(
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.easeInOut);
+                          },
+                          child: const Text('Далее'),
+                        )
+                      else
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => TrainingScreen(
+                                        words: words,
+                                        lesson: widget.lesson,
+                                      )),
+                            );
+                          },
+                          child: const Text('Перейти к тренировке'),
+                        )
+                    ],
+                  ),
+                )
               ],
             );
           } else if (snapshot.hasError) {

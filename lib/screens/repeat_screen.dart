@@ -51,7 +51,10 @@ class _RepeatScreenState extends State<RepeatScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (_) => TrainingScreen(words: words)),
+                            builder: (_) => TrainingScreen(
+                                  words: words,
+                                  lesson: 0,
+                                )),
                       );
                     },
                   ),
