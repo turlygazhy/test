@@ -23,7 +23,7 @@ class _LessonScreenState extends State<LessonScreen> {
   void initState() {
     super.initState();
     _controller = PageController();
-    _wordsFuture = WordService.loadWordsByLesson(widget.lesson);
+    _wordsFuture = WordService.loadUnlearnedWordsByLesson(widget.lesson);
   }
 
   @override
@@ -35,6 +35,9 @@ class _LessonScreenState extends State<LessonScreen> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             final words = snapshot.data!;
+            if (words.isEmpty) {
+              return const Center(child: Text('Все слова изучены'));
+            }
             return Column(
               children: [
                 Expanded(
