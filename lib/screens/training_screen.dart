@@ -69,7 +69,10 @@ class _TrainingScreenState extends State<TrainingScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(word.arabic, style: const TextStyle(fontSize: 32)),
+            Text(
+              word.arabic,
+              style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+            ),
             const SizedBox(height: 20),
             ...options.map((o) => Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4.0),

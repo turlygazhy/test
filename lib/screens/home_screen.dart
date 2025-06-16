@@ -8,21 +8,29 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('500 слов из Корана'),
+        title: const Text('500 слов из Корана'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              child: Text('📚 Уроки'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => const LessonsScreen()),
-                );
-              },
-            ),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFFE8F5E9), Color(0xFFB9F6CA)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ElevatedButton(
+                child: const Text('📚 Уроки'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const LessonsScreen()),
+                  );
+                },
+              ),
             const SizedBox(height: 20),
             ElevatedButton(
               child: Text('🔁 Повторение'),
@@ -44,6 +52,7 @@ class HomeScreen extends StatelessWidget {
               },
             ),
           ],
+        ),
         ),
       ),
     );
