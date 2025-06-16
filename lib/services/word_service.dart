@@ -22,6 +22,11 @@ class WordService {
     return words.where((w) => w.lesson == lesson).toList();
   }
 
+  static Future<List<QuranWord>> loadUnlearnedWordsByLesson(int lesson) async {
+    final words = await loadWordsByLesson(lesson);
+    return words.where((w) => !w.isLearned).toList();
+  }
+
   static Future<int> lessonCount() async {
     final words = await loadWords();
     return words.map((w) => w.lesson).toSet().length;
