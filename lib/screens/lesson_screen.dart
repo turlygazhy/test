@@ -30,7 +30,8 @@ class _LessonScreenState extends State<LessonScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Урок ${widget.lesson}')),
-      body: FutureBuilder<List<QuranWord>>(
+      body: SafeArea(
+        child: FutureBuilder<List<QuranWord>>(
         future: _wordsFuture,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
@@ -95,6 +96,7 @@ class _LessonScreenState extends State<LessonScreen> {
           }
         },
       ),
-    );
+    ),
+  );
   }
 }
