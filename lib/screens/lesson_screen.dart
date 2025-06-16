@@ -32,15 +32,17 @@ class _LessonScreenState extends State<LessonScreen> {
       appBar: AppBar(title: Text('Урок ${widget.lesson}')),
       body: SafeArea(
         child: FutureBuilder<List<QuranWord>>(
-        future: _wordsFuture,
-        builder: (context, snapshot) {
+          future: _wordsFuture,
+          builder: (context, snapshot) {
           if (snapshot.hasData) {
             final words = snapshot.data!;
             if (words.isEmpty) {
               return const Center(child: Text('Все слова изучены'));
             }
-            return Column(
-              children: [
+            return LayoutBuilder(
+              builder: (context, constraints) {
+                return Column(
+                  children: [
                 Expanded(
                   child: PageView.builder(
                     controller: _controller,
@@ -87,8 +89,10 @@ class _LessonScreenState extends State<LessonScreen> {
                     ],
                   ),
                 )
-              ],
-            );
+                ],
+              );
+            },
+          );
           } else if (snapshot.hasError) {
             return Center(child: Text('Ошибка загрузки слов'));
           } else {
